@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Read inspiring stories and practical ideas on BlogSpace.">
+
+    <title>Article | BlogSpace</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="article.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Blog<span>Space.</span></a>
+
+            <a href="index.html#articles" class="back-link">
+                ← Back to Articles
+            </a>
+
+            <button class="theme-toggle" id="themeToggle"
+                    aria-label="Toggle dark mode">🌙</button>
+        </nav>
+    </header>
+
+    <main class="article-page container">
+
+        <!-- Article content will load using JavaScript -->
+        <article id="articleContent" class="article-content"></article>
+
+        <!-- Share buttons -->
+        <section class="share-section">
+            <h3>Enjoyed this article?</h3>
+            <p>Share it with your friends.</p>
+
+            <div class="share-buttons">
+                <button id="shareNative" class="share-btn">
+                    Share Article ↗
+                </button>
+
+                <button id="shareWhatsApp" class="share-btn">
+                    WhatsApp
+                </button>
+
+                <button id="copyLink" class="share-btn">
+                    Copy Link
+                </button>
+            </div>
+
+            <p id="shareMessage" aria-live="polite"></p>
+        </section>
+
+        <!-- Comments section -->
+        <section class="comments-section">
+            <h2>Join the Conversation</h2>
+            <p>Share your thoughts about this article.</p>
+
+            <form id="commentForm" class="comment-form">
+                <label for="commentName">Your name</label>
+                <input type="text" id="commentName"
+                       placeholder="Enter your name" required
+                       maxlength="60">
+
+                <label for="commentText">Your comment</label>
+                <textarea id="commentText"
+                          placeholder="Write your thoughts..."
+                          rows="5" required maxlength="1000"></textarea>
+
+                <button type="submit" class="btn">
+                    Post Comment
+                </button>
+            </form>
+
+            <p id="commentMessage" aria-live="polite"></p>
+
+            <div id="commentsList" class="comments-list"></div>
+
+            <p class="comment-notice">
+                Demo only: comments are stored in this browser and are
+                not shared with other visitors.
+            </p>
+        </section>
+
+        <!-- Related articles -->
+        <section class="related-section">
+            <h2>You May Also Like</h2>
+            <div id="relatedGrid" class="related-grid"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <a href="index.html" class="logo">Blog<span>Space.</span></a>
+            <p>Stories, ideas and inspiration for curious minds.</p>
+            <p class="copyright">© 2026 BlogSpace.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="article.js"></script>
+
+</body>
+</html>

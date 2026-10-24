@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | BlogSpace</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Blog<span>Space.</span></a>
+            <a href="index.html" class="back-link">← View Website</a>
+        </nav>
+    </header>
+
+    <main class="admin-container container">
+
+        <section class="admin-heading">
+            <span class="eyebrow">CONTENT MANAGEMENT</span>
+            <h1>Admin Dashboard</h1>
+            
+        <button type="button" class="btn" id="createTestArticle">
+            ✨ Create Test Article Automatically
+        </button>
+
+            <p>Manage your BlogSpace articles from one place.</p>
+        </section>
+
+        <section class="admin-stats">
+            <div class="stat-card">
+                <span>Total Articles</span>
+                <h2 id="totalArticles">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>Custom Articles</span>
+                <h2 id="customArticles">0</h2>
+            </div>
+        </section>
+
+        <section class="admin-panel">
+            <h2 id="formHeading">Create a New Article</h2>
+
+            <form id="articleForm" class="admin-form">
+                <input type="hidden" id="editId">
+
+                <label for="postTitle">Article Title</label>
+                <input type="text" id="postTitle"
+                       placeholder="Enter article title"
+                       maxlength="120" required>
+
+                <label for="postCategory">Category</label>
+                <select id="postCategory" required>
+                    <option value="Technology">Technology</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Design">Design</option>
+                </select>
+
+                <label for="postAuthor">Author</label>
+                <input type="text" id="postAuthor"
+                       placeholder="Your name" maxlength="60" required>
+
+                <label for="postImage">Image URL</label>
+                <input type="url" id="postImage"
+                       placeholder="https://example.com/image.jpg" required>
+
+                <label for="postExcerpt">Short Description</label>
+                <textarea id="postExcerpt"
+                          placeholder="Write a short summary..."
+                          rows="3" maxlength="300" required></textarea>
+
+                <label for="postContent">Full Article</label>
+                <textarea id="postContent"
+                          placeholder="Write your article here..."
+                          rows="8" maxlength="20000" required></textarea>
+
+                <div class="admin-actions">
+                    <button type="submit" class="btn" id="saveArticle">
+                        Publish Article
+                    </button>
+
+                    <button type="button" class="btn btn-outline"
+                            id="cancelEdit" hidden>
+                        Cancel Edit
+                    </button>
+                </div>
+
+                <p id="adminMessage" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section class="admin-panel">
+            <div class="admin-list-heading">
+                <h2>Manage Articles</h2>
+                <input type="search" id="adminSearch"
+                       placeholder="Search your articles..."
+                       aria-label="Search admin articles">
+            </div>
+
+            <div id="adminArticleList" class="admin-article-list"></div>
+        </section>
+
+        <p class="admin-warning">
+            Demo dashboard only. Changes are stored in this browser.
+            There is no secure admin login or server database yet.
+        </p>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+
+</body>
+</html>

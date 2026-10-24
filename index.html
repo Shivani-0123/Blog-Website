@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover inspiring stories, technology tips, lifestyle ideas and more on BlogSpace.">
+    <title>BlogSpace | Stories That Inspire</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#" class="logo">Blog<span>Space.</span></a>
+
+            <button class="menu-toggle" id="menuToggle"
+                    aria-label="Toggle navigation" aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+
+            <button class="theme-toggle" id="themeToggle"
+                    aria-label="Toggle dark mode">🌙</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container" id="home">
+            <div class="hero-content">
+                <span class="eyebrow">WELCOME TO BLOGSPACE</span>
+
+                <h1>Ideas worth sharing.<br>
+                    <span>Stories worth reading.</span>
+                </h1>
+
+                <p>
+                    Explore fresh perspectives on technology, lifestyle,
+                    creativity and everything that inspires you.
+                </p>
+
+                <a href="#articles" class="btn">Explore Articles ↗</a>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=85"
+                    alt="Notebook and workspace on a desk">
+                <div class="image-caption">
+                    <span>✦ A LITTLE INSPIRATION</span>
+                    <p>Your next great read starts here.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories container" id="categories">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">EXPLORE YOUR INTERESTS</span>
+                    <h2>Browse Categories</h2>
+                </div>
+            </div>
+
+            <div class="category-list" id="categoryList">
+                <button class="category-btn active" data-category="All">All Posts</button>
+                <button class="category-btn" data-category="Technology">Technology</button>
+                <button class="category-btn" data-category="Lifestyle">Lifestyle</button>
+                <button class="category-btn" data-category="Travel">Travel</button>
+                <button class="category-btn" data-category="Design">Design</button>
+            </div>
+        </section>
+
+        <!-- Blog Articles -->
+        <section class="articles container" id="articles">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">THE LATEST STORIES</span>
+                    <h2>Explore Our Articles</h2>
+                </div>
+
+                <span class="article-count" id="articleCount">6 articles</span>
+            </div>
+
+            <!-- Search -->
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="search" id="searchInput"
+                       placeholder="Search articles, topics or keywords..."
+                       aria-label="Search articles">
+                <button id="clearSearch" aria-label="Clear search">✕</button>
+            </div>
+
+            <!-- JavaScript will display article cards here -->
+            <div class="blog-grid" id="blogGrid"></div>
+
+            <p class="no-results" id="noResults" hidden>
+                No articles found. Try another search or category.
+            </p>
+
+            <div class="load-more-wrapper">
+                <button class="btn btn-outline" id="loadMore">
+                    Load More Articles ↓
+                </button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="container about-content">
+                <span class="eyebrow">OUR LITTLE CORNER OF THE INTERNET</span>
+                <h2>Good ideas deserve<br>to be shared.</h2>
+                <p>
+                    BlogSpace is a place for curious minds. We share
+                    practical knowledge, inspiring stories and fresh
+                    ideas to help you learn something new every day.
+                </p>
+                <a href="#articles" class="text-link">Discover our stories →</a>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter container">
+            <div>
+                <span class="eyebrow">STAY IN THE LOOP</span>
+                <h2>A little inspiration, delivered.</h2>
+                <p>Join our newsletter for fresh ideas and new stories.</p>
+            </div>
+
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" id="newsletterEmail"
+                       placeholder="Enter your email address"
+                       aria-label="Email address" required>
+                <button type="submit" class="btn">Subscribe ↗</button>
+            </form>
+
+            <p id="newsletterMessage" class="newsletter-message"
+               aria-live="polite"></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <a href="#home" class="logo">Blog<span>Space.</span></a>
+            <p>Stories, ideas and inspiration for curious minds.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#articles">Articles</a>
+                <a href="#about">About</a>
+            </div>
+            <p class="copyright">
+                © 2026 BlogSpace. Made with ♥ for curious minds.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

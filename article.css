@@ -1,0 +1,218 @@
+
+/* ARTICLE PAGE */
+
+.article-page {
+    max-width: 850px;
+    padding-top: 55px;
+    padding-bottom: 80px;
+}
+
+.back-link {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.article-content {
+    margin-bottom: 55px;
+}
+
+.article-cover {
+    width: 100%;
+    max-height: 440px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin: 28px 0;
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 18px 0;
+}
+
+.article-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.article-excerpt {
+    font-size: 1.12rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.article-body {
+    font-size: 1.05rem;
+    line-height: 1.95;
+}
+
+.article-body h2 {
+    font-size: 1.8rem;
+    margin: 32px 0 12px;
+}
+
+.article-body p {
+    margin-bottom: 20px;
+}
+
+.share-section,
+.comments-section,
+.related-section {
+    border-top: 1px solid var(--border);
+    padding-top: 35px;
+    margin-top: 45px;
+}
+
+.share-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.share-btn {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--card);
+    color: var(--text);
+    font-weight: 600;
+}
+
+.share-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+#shareMessage,
+#commentMessage {
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.comment-form label {
+    font-weight: 600;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    resize: vertical;
+}
+
+.comment-form .btn {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+.comments-list {
+    display: grid;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.comment-item {
+    padding: 18px;
+    background: var(--surface);
+    border-radius: 12px;
+    overflow-wrap: anywhere;
+}
+
+.comment-item h4 {
+    margin-bottom: 5px;
+}
+
+.comment-item p {
+    white-space: pre-wrap;
+}
+
+.comment-notice {
+    font-size: 0.82rem;
+    margin-top: 20px;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.related-card {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--card);
+}
+
+.related-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.related-card-content {
+    padding: 16px;
+}
+
+.related-card-content h3 {
+    font-family: "Playfair Display", serif;
+    margin-bottom: 8px;
+}
+
+.related-card-content a:hover {
+    color: var(--primary);
+}
+
+.related-card-content p {
+    font-size: 0.88rem;
+}
+
+@media (max-width: 600px) {
+    .article-page {
+        padding-top: 35px;
+    }
+
+    .article-cover {
+        max-height: 280px;
+    }
+
+    .related-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .share-buttons {
+        flex-direction: column;
+    }
+
+    .share-btn {
+        width: 100%;
+    }
+}

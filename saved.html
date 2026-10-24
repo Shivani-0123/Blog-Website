@@ -1,0 +1,227 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Saved Articles | BlogSpace</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">Blog<span>Space.</span></a>
+
+            <a href="index.html#articles" class="back-link">
+                ← All Articles
+            </a>
+        </nav>
+    </header>
+
+    <main class="container" style="padding-top: 50px; padding-bottom: 80px;">
+
+        <span class="eyebrow">YOUR READING LIST</span>
+
+        <h1 style="font-family: 'Playfair Display', serif;">
+            Saved Articles ♥
+        </h1>
+
+        <p id="savedCount" style="margin: 12px 0 25px;">
+            Loading saved articles...
+        </p>
+
+        <div id="savedGrid" class="blog-grid"></div>
+
+        <p id="emptySaved" hidden style="padding: 35px 0;">
+            You haven't saved any articles yet.
+            Visit the homepage and press Save Article on a blog card.
+        </p>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <a href="index.html" class="logo">Blog<span>Space.</span></a>
+            <p>Stories, ideas and inspiration for curious minds.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        function renderSavedArticles() {
+            const grid = document.getElementById("savedGrid");
+            const count = document.getElementById("savedCount");
+            const empty = document.getElementById("emptySaved");
+
+            // Get bookmarked article IDs
+            const savedIds = getBookmarks().map(Number);
+
+            // Get custom articles created from the Admin Dashboard
+            const customArticles = JSON.parse(
+                localStorage.getItem("blogCustomArticles") || "[]"
+            );
+
+            // Get articles edited from the Admin Dashboard
+            const editedArticles = JSON.parse(
+                localStorage.getItem("blogEditedArticles") || "[]"
+            );
+
+            // Get deleted article IDs
+            const deletedIds = JSON.parse(
+                localStorage.getItem("blogDeletedArticles") || "[]"
+            ).map(Number);
+
+            // Start with the default articles
+            let allArticles = [...articles];
+
+            // Add custom articles without creating duplicates
+            customArticles.forEach(article => {
+                const exists = allArticles.some(
+                    item => Number(item.id) === Number(article.id)
+                );
+
+                if (!exists) {
+                    allArticles.push(article);
+                }
+            });
+
+            // Apply edits to existing articles
+                if (Array.isArray(editedArticles)) {
+            editedArticles.forEach(editedArticle => {
+                const index = allArticles.findIndex(
+                    article =>
+                        Number(article.id) === Number(editedArticle.id)
+                );
+
+                if (index !== -1) {
+                    allArticles[index] = {
+                        ...allArticles[index],
+                        ...editedArticle
+                    };
+                }
+            });
+        } else if (
+            editedArticles &&
+            typeof editedArticles === "object"
+        ) {
+            Object.values(editedArticles).forEach(editedArticle => {
+                if (!editedArticle || editedArticle.id === undefined) {
+                    return;
+                }
+
+                const index = allArticles.findIndex(
+                    article =>
+                        Number(article.id) === Number(editedArticle.id)
+                );
+
+                if (index !== -1) {
+                    allArticles[index] = {
+                        ...allArticles[index],
+                        ...editedArticle
+                    };
+                }
+            });
+        }
+
+            // Exclude deleted articles
+            allArticles = allArticles.filter(
+                article => !deletedIds.includes(Number(article.id))
+            );
+
+            // Keep only bookmarked articles
+            const savedArticles = allArticles.filter(article =>
+                savedIds.includes(Number(article.id))
+            );
+
+            // Update saved count
+            count.textContent =
+                `${savedArticles.length} saved ${
+                    savedArticles.length === 1 ? "article" : "articles"
+                }`;
+
+            // Show or hide the empty message
+            empty.hidden = savedArticles.length > 0;
+
+            // Render saved article cards
+            grid.innerHTML = savedArticles.map(article => `
+                <article class="blog-card">
+
+                    <div class="blog-card-image-wrap">
+                        <img
+                            class="blog-card-image"
+                            src="${article.image || ""}"
+                            alt="${article.title || "Saved article"}"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div class="blog-card-content">
+
+                        <div class="blog-card-meta">
+                            <span class="blog-category">
+                                ${article.category || "General"}
+                            </span>
+                        </div>
+
+                        <h3>
+                            <a href="article.html?id=${article.id}">
+                                ${article.title || "Untitled Article"}
+                            </a>
+                        </h3>
+
+                        <p>
+                            ${article.excerpt || article.description || ""}
+                        </p>
+
+                        <div class="card-bottom">
+
+                            <a
+                                class="read-more"
+                                href="article.html?id=${article.id}"
+                            >
+                                Read Article →
+                            </a>
+
+                            <button
+                                class="bookmark-btn"
+                                data-remove="${article.id}"
+                                aria-pressed="true"
+                            >
+                                ♥ Remove
+                            </button>
+
+                        </div>
+                    </div>
+                </article>
+            `).join("");
+        }
+
+        // Remove an article from the saved list
+        document.getElementById("savedGrid").addEventListener(
+            "click",
+            function(event) {
+                const button = event.target.closest("[data-remove]");
+
+                if (!button) return;
+
+                toggleBookmark(Number(button.dataset.remove));
+
+                renderSavedArticles();
+            }
+        );
+
+        // Render saved articles when the page opens
+        renderSavedArticles();
+    </script>
+
+</body>
+</html>
+```
